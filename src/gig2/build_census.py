@@ -25,7 +25,7 @@ def build_census():
         data_list = www.read_tsv(remote_url)
         table_file = _utils.get_table_file(
             'regions',
-            'census2012',
+            '2012census',
             attr_id,
         )
         tsv.write(table_file, data_list)
