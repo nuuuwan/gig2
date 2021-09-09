@@ -1,1 +1,2 @@
   * Removed files
+  * Added regions
