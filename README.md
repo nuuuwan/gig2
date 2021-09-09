@@ -1,4 +1,5 @@
 # GIG Data
+*{total_file_size_gb:.1f} GB
 * [regions.2012census.households_living_in_housing_unit.tsv](https://github.com/nuuuwan/gig2/blob/data/regions.2012census.households_living_in_housing_unit.tsv)
 * [regions.2012census.solid_waste_disposal_by_household.tsv](https://github.com/nuuuwan/gig2/blob/data/regions.2012census.solid_waste_disposal_by_household.tsv)
 * [regions.2012census.communication_items_owned_by_household.tsv](https://github.com/nuuuwan/gig2/blob/data/regions.2012census.communication_items_owned_by_household.tsv)
