@@ -10,3 +10,4 @@
   * Added census
   * Added metadata
   * Added file size
+  * Fixed file size #BUG

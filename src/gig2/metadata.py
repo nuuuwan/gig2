@@ -2,7 +2,7 @@ import os
 
 from utils import tsv, filex
 
-from gig2._utils import DIR_DATA
+from gig2._utils import log, DIR_DATA
 
 def infer_metadata():
     metadata = []
@@ -30,6 +30,7 @@ def infer_metadata():
         )
     metadata_file = os.path.join(DIR_DATA, '_metadata.tsv')
     tsv.write(metadata_file, metadata)
+    log.info(f'Wrote {metadata_file}')
 
     md_lines = ['# GIG Data']
     total_file_size = 0
@@ -42,10 +43,11 @@ def infer_metadata():
             file,
         )
         md_lines.append(f'* [{file}]({url})')
-    total_file_size_gb = total_file_size / 1_000_000_000    
+    total_file_size_gb = total_file_size / 1_000_000_000
     md_lines = md_lines[:1] + [
-        '*{total_file_size_gb:.1f} GB',
+        f'*{total_file_size_gb:.1f} GB',
     ] + md_lines[1:]
 
     md_file = os.path.join(DIR_DATA, 'README.md')
     filex.write(md_file, '\n'.join(md_lines))
+    log.info(f'Wrote {md_file}')
