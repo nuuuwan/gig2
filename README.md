@@ -7,3 +7,4 @@
   * Lint
   * Initial Files
   * build_gig
+  * Added census

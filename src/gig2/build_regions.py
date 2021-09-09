@@ -2,22 +2,13 @@ import os
 
 from utils import tsv, www
 
+from gig2 import _utils
 from gig2._utils import log
 
-DIR_DATA = '/tmp/gig2'
 
-
-def init():
-    if not os.path.exists(DIR_DATA):
-        os.mkdir(DIR_DATA)
-
-
-def get_table_file(attr_id, time_id, space_id):
-    return os.path.join(DIR_DATA, f'{attr_id}.{time_id}.{space_id}.tsv')
-
-
-def build():
+def build_regions():
     for region_type in [
+        'country',
         'province',
         'district',
         'dsd',
@@ -33,16 +24,11 @@ def build():
             f'{region_type}.tsv',
         )
         data_list = www.read_tsv(remote_url)
-        table_file = get_table_file(
-            'basic',
-            'latest',
+        table_file = _utils.get_table_file(
             region_type,
+            'latest',
+            'basic',
         )
         tsv.write(table_file, data_list)
         n_data_list = len(data_list)
         log.info(f'Wrote {n_data_list} rows to {table_file}')
-
-
-if __name__ == '__main__':
-    init()
-    build()
