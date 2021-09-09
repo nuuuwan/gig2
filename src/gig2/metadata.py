@@ -1,8 +1,9 @@
 import os
 
-from utils import tsv, filex
+from utils import filex, tsv
 
-from gig2._utils import log, DIR_DATA
+from gig2._utils import DIR_DATA, log
+
 
 def infer_metadata():
     metadata = []
@@ -28,6 +29,10 @@ def infer_metadata():
                 file_size=file_size,
             )
         )
+    metadata = sorted(
+        metadata,
+        key=lambda d: d['file'],
+    )
     metadata_file = os.path.join(DIR_DATA, '_metadata.tsv')
     tsv.write(metadata_file, metadata)
     log.info(f'Wrote {metadata_file}')
@@ -44,9 +49,13 @@ def infer_metadata():
         )
         md_lines.append(f'* [{file}]({url})')
     total_file_size_mb = total_file_size / 1_000_000
-    md_lines = md_lines[:1] + [
-        f'*{total_file_size_mb:.1f} MB*',
-    ] + md_lines[1:]
+    md_lines = (
+        md_lines[:1]
+        + [
+            f'*{total_file_size_mb:.1f} MB*',
+        ]
+        + md_lines[1:]
+    )
 
     md_file = os.path.join(DIR_DATA, 'README.md')
     filex.write(md_file, '\n'.join(md_lines))

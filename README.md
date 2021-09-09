@@ -12,3 +12,4 @@
   * Added file size
   * Fixed file size #BUG
   * Fixed file size #BUG v2
+  * Added elections; Sorted metadata
