@@ -6,3 +6,4 @@
   * Basic changes
   * Lint
   * Initial Files
+  * build_gig
