@@ -9,3 +9,4 @@
   * build_gig
   * Added census
   * Added metadata
+  * Added file size

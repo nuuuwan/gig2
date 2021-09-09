@@ -32,13 +32,20 @@ def infer_metadata():
     tsv.write(metadata_file, metadata)
 
     md_lines = ['# GIG Data']
+    total_file_size = 0
     for metad in metadata:
         file = metad['file']
+        file_size = metad['file_size']
+        total_file_size += file_size
         url = os.path.join(
             'https://github.com/nuuuwan/gig2/blob/data',
             file,
         )
         md_lines.append(f'* [{file}]({url})')
+    total_file_size_gb = total_file_size / 1_000_000_000    
+    md_lines = md_lines[:1] + [
+        '*{total_file_size_gb:.1f} GB',
+    ] + md_lines[1:]
 
     md_file = os.path.join(DIR_DATA, 'README.md')
     filex.write(md_file, '\n'.join(md_lines))
