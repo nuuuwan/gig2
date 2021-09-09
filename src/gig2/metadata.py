@@ -43,9 +43,9 @@ def infer_metadata():
             file,
         )
         md_lines.append(f'* [{file}]({url})')
-    total_file_size_gb = total_file_size / 1_000_000_000
+    total_file_size_mb = total_file_size / 1_000_000
     md_lines = md_lines[:1] + [
-        f'*{total_file_size_gb:.1f} GB',
+        f'*{total_file_size_mb:.1f} MB*',
     ] + md_lines[1:]
 
     md_file = os.path.join(DIR_DATA, 'README.md')
